@@ -55,6 +55,7 @@ class PaymentProcessing(http.Controller):
         payment_transaction_ids = request.env['payment.transaction'].sudo().browse(tx_ids_list).exists()
 
         render_ctx = {
+            'company_id':request.env['website'].get_current_website().company_id,
             'payment_tx_ids': payment_transaction_ids.ids,
         }
         return request.render("payment.payment_process_page", render_ctx)

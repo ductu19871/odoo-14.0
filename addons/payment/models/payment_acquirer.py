@@ -639,6 +639,10 @@ class PaymentTransaction(models.Model):
         ('reference_uniq', 'unique(reference)', 'Reference must be unique!'),
     ]
 
+    def create(self, vals):
+        print ('tao pyament.transaction')
+        return super().create(vals)
+
     @api.depends('invoice_ids')
     def _compute_invoice_ids_nbr(self):
         for trans in self:
